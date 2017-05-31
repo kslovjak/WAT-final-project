@@ -14,7 +14,7 @@ var router = express.Router();
 var port = process.env.API_PORT || 3001;
 
 //database config: mlab or heroukz
-mongoose.connect('mongodb://heroku_4bmxrl83:9godqf0g2379qopkp0icuuj4n8@ds157521.mlab.com:57521/heroku_4bmxrl83', function(err) {
+mongoose.connect('mongodb://kslovjak:wat2017.@ds157521.mlab.com:57521/mernchat', function(err) {
   if (err) {
     console.log(err);
   }else{
