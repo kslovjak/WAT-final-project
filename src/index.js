@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import CommentBox from './CommentBox';
+import MessageBox from './MessageBox';
 
 ReactDOM.render(
-  <CommentBox
-    url='http://localhost:3001/api/comments'
+  <MessageBox
+    url='http://localhost:3001/api/messages'
     pollInterval={1000} />,
   document.getElementById('root')
 );

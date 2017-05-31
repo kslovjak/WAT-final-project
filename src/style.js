@@ -1,5 +1,5 @@
 const style = {
-  commentBox: {
+  messageBox: {
     width:'80vw',
     margin:'0 auto',
     fontFamily:'Helvetica, sans-serif'
@@ -8,25 +8,25 @@ const style = {
     textAlign:'center',
     textTransform:'uppercase'
   },
-  commentList: {
+  messageList: {
     border:'1px solid #f1f1f1',
     padding:'0 12px',
     maxHeight:'70vh',
     overflow:'scroll'
   },
-  comment: {
+  message: {
     backgroundColor:'#fafafa',
     margin:'10px',
     padding:'3px 10px',
     fontSize:'.85rem'
   },
-  commentForm: {
+  messageForm: {
     margin:'10px',
     display:'flex',
     flexFlow:'row wrap',
     justifyContent:'space-between'
   },
-  commentFormAuthor: {
+  messageFormAuthor: {
     minWidth:'150px',
     margin:'3px',
     padding:'0 10px',
@@ -34,7 +34,7 @@ const style = {
     height:'40px',
     flex:'2'
   },
-  commentFormText: {
+  messageFormText: {
     flex:'4',
     minWidth:'400px',
     margin:'3px',
@@ -42,7 +42,7 @@ const style = {
     height:'40px',
     borderRadius:'3px'
   },
-  commentFormPost: {
+  messageFormPost: {
     minWidth:'75px',
     flex:'1',
     height:'40px',

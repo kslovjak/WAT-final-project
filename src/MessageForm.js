@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import style from './style';
 
-class CommentForm extends Component {
+class MessageForm extends Component {
   constructor(props) {
     super(props);
     this.state = { author: '', text: '' };
@@ -22,31 +22,31 @@ class CommentForm extends Component {
     if (!text || !author) {
       return;
     }
-    this.props.onCommentSubmit({ author: author, text: text });
+    this.props.onMessageSubmit({ author: author, text: text });
     this.setState({ author: '', text: '' });
   }
   render() {
     return (
-      <form style={ style.commentForm } onSubmit={ this.handleSubmit }>
+      <form style={ style.messageForm } onSubmit={ this.handleSubmit }>
         <input
           type='text'
           placeholder='Your name...'
-          style={ style.commentFormAuthor}
+          style={ style.messageFormAuthor}
           value={ this.state.author }
           onChange={ this.handleAuthorChange } />
         <input
           type='text'
           placeholder='Say something...'
-          style={ style.commentFormText}
+          style={ style.messageFormText}
           value={ this.state.text }
           onChange={ this.handleTextChange } />
         <input
           type='submit'
-          style={ style.commentFormPost }
+          style={ style.messageFormPost }
           value='Post'/>
       </form>
     )
   }
 }
 
-export default CommentForm;
+export default MessageForm;
