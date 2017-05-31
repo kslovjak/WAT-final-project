@@ -1,3 +1,4 @@
+//importing dependecies
 import React, { Component } from 'react';
 import style from './style';
 import marked from 'marked';
@@ -10,7 +11,7 @@ class Comment extends Component {
       author: '',
       text: ''
     };
-    //binding all our functions to this class
+    //binding functions to this class
     this.deleteComment = this.deleteComment.bind(this);
     this.updateComment = this.updateComment.bind(this);
     this.handleAuthorChange = this.handleAuthorChange.bind(this);
@@ -25,8 +26,7 @@ class Comment extends Component {
   handleCommentUpdate(e) {
     e.preventDefault();
     let id = this.props.uniqueID;
-    //if author or text changed, set it. if not, leave null and our PUT request
-    //will ignore it.
+    //if author or text changed, set it. if not, leave null and PUT request will ignore it.
     let author = (this.state.author) ? this.state.author : null;
     let text = (this.state.text) ? this.state.text : null;
     let comment = { author: author, text: text};
@@ -41,7 +41,7 @@ class Comment extends Component {
     e.preventDefault();
     let id = this.props.uniqueID;
     this.props.onCommentDelete(id);
-    console.log('oops deleted');
+    console.log('deleted');
   }
   handleTextChange(e) {
     this.setState({ text: e.target.value });

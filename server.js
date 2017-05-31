@@ -1,20 +1,20 @@
 'use strict'
 
-//first we import our dependencies...
+//importing dependecies
 var express = require('express');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var Comment = require('./model/comments');
 
-//and create our instances
+//creating instances
 var app = express();
 var router = express.Router();
 
-//set our port to either a predetermined port number if you have set it up, or 3001
+//setting port to either a predetermined port number if it is set up, or 3001
 var port = process.env.API_PORT || 3001;
 
-//db config -- REPLACE USERNAME/PASSWORD WITH YOUR OWN FROM MLAB!
-mongoose.connect('mongodb://kslovjak:kslovjak@ds157521.mlab.com:57521/mernchat', function(err) {
+//database config: mlab or heroukz
+mongoose.connect('mongodb://heroku_4bmxrl83:9godqf0g2379qopkp0icuuj4n8@ds157521.mlab.com:57521/heroku_4bmxrl83', function(err) {
   if (err) {
     console.log(err);
   }else{
@@ -23,7 +23,7 @@ mongoose.connect('mongodb://kslovjak:kslovjak@ds157521.mlab.com:57521/mernchat',
 }
   );
 
-//now we should configure the APi to use bodyParser and look for JSON data in the body
+//configuring the APi to use bodyParser and look for JSON data in the body
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
@@ -34,25 +34,25 @@ app.use(function(req, res, next) {
   res.setHeader('Access-Control-Allow-Methods', 'GET,HEAD,OPTIONS,POST,PUT,DELETE');
   res.setHeader('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers');
 
-  //and remove cacheing so we get the most recent comments
+  //removing caching so we get the most recent comments
   res.setHeader('Cache-Control', 'no-cache');
   next();
 });
 
-//now  we can set the route path & initialize the API
+//setting the route path & initializing the API
 router.get('/', function(req, res) {
   res.json({ message: 'API Initialized!'});
 });
 
-//adding the /comments route to our /api router
+//adding the /comments route to /api router
 router.route('/comments')
   //retrieve all comments from the database
   .get(function(req, res) {
-    //looks at our Comment Schema
+    //looks at Comment Schema
     Comment.find(function(err, comments) {
       if (err)
         res.send(err);
-      //responds with a json object of our database comments.
+      //responds with a json object of database comments.
       res.json(comments)
     });
   })
@@ -77,7 +77,7 @@ router.route('/comments/:comment_id')
       if (err)
         res.send(err);
       //setting the new author and text to whatever was changed. If nothing was changed
-      // we will not alter the field.
+      // field will not be altered.
       (req.body.author) ? comment.author = req.body.author : null;
       (req.body.text) ? comment.text = req.body.text : null;
       //save comment
@@ -98,7 +98,7 @@ router.route('/comments/:comment_id')
     })
   });
 
-//Use our router configuration when we call /api
+//uses router configuration when using /api
 app.use('/api', router);
 
 //starts the server and listens for requests

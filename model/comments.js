@@ -1,14 +1,14 @@
 'use strict';
-//import dependency
+//importing dependecies
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 //create new instance of the mongoose.schema. the schema takes an object that shows
-//the shape of your database entries.
+//the shape of db entries.
 var CommentsSchema = new Schema({
   author: String,
   text: String
 });
 
-//export our module to use in server.js
+//exporting module to use in server.js
 module.exports = mongoose.model('Comment', CommentsSchema);
